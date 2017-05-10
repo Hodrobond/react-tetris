@@ -3,6 +3,8 @@
  */
 import React from 'react'
 
+import './tile.css'
+
 class Tile extends React.Component{
   render(){
     return(

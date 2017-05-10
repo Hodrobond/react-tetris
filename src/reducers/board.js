@@ -1,4 +1,8 @@
 var AppConstants = require('../constants/constants');
+var pieceSetter = require('../modules/piece-setter');
+var pieceList = require("./pieceList");
+
+var _ = require('lodash');
 
 function buildGameRow () {
   var row = new Array(AppConstants.GAME_WIDTH);
@@ -13,10 +17,36 @@ function init(){
   for (var y = 0; y < board.length; y++) {
     board[y] = buildGameRow();
   }
+  var currentPiece = pieceList.default().currentPiece
+//  addPiece(board, currentPiece._piece, currentPiece._rotation, currentPiece._position);
   return board;
 }
 
-//var _setPiece = pieceSetter(_gameBoard);
+function addPiece(state, piece, rotation, position){
+    var newState = _.cloneDeep(state);
+    pieceSetter(newState)(piece.blocks[rotation], position, piece.className);
+//    BoardStore.clearFullLines();
+//    BoardStore.emitChange();
+    return newState;
+}
+
+function clearRows(state1){
+  var state = _.cloneDeep(state1);
+  var length = state[state.length - 1].length
+  for(var i = 0; i < length; i++){
+    if(state[state.length - 1][i] === false){
+      break;
+    }
+    if(i === length - 1){
+      state.splice(state.length - 1, 1);
+      state.unshift(new Array(state[0].length));
+      for(var j = 0; j < state[0].length; j++){
+        state[0][j] = false;
+      }
+    }
+  }
+  return state;
+}
 
 const BoardStore = (state = 0, action) => {
   if(state === 0){
@@ -24,7 +54,11 @@ const BoardStore = (state = 0, action) => {
   }
   switch(action.type){
     case 'NEW_GAME':
-      return init();
+      return init(state);
+    case "ADD_PIECE":
+      return addPiece(state, action.piece, action.rotation, action.position);
+    case 'CLEAR_ROWS':
+      return clearRows(state);
     default:
       return state
   }
