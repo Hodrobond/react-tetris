@@ -46,12 +46,9 @@ class Board extends React.Component{
   }
 
   render() {
-    var piece = this.props.PieceList.currentPiece;
-    var newBoard = _.cloneDeep(this.props.Board);
-    pieceSetter(newBoard)(piece._piece.blocks[piece._rotation], piece._position, piece._piece.className);
     return (
       <div className="board">
-        {newBoard.map((x, i) =>
+        {this.props.Board.map((x, i) =>
           <Row value={x} key={i}/>
         )}
       </div>
@@ -60,8 +57,11 @@ class Board extends React.Component{
 };
 
 const mapStateToProps = (state) => {
+  var piece = state.PieceList.currentPiece;
+  var newBoard = _.cloneDeep(state.Board);
+  pieceSetter(newBoard)(piece._piece.blocks[piece._rotation], piece._position, piece._piece.className);
   return {
-    Board: state.Board,
+    Board: newBoard,
     PieceList: state.PieceList
   }
 }
