@@ -1,0 +1,27 @@
+.piece-queue-piece-i .piece .row .tile-1{
+  background: maroon;
+}
+
+.piece-queue-piece-j .piece .row .tile-1{
+  background: lightgrey;
+}
+
+.piece-queue-piece-l .piece .row .tile-1{
+  background: purple;
+}
+
+.piece-queue-piece-o .piece .row .tile-1{
+  background: navy;
+}
+
+.piece-queue-piece-s .piece .row .tile-1{
+  background: darkgreen;
+}
+
+.piece-queue-piece-t .piece .row .tile-1{
+  background: brown;
+}
+
+.piece-queue-piece-z .piece .row .tile-1{
+  background: teal;
+}

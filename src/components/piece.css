@@ -1,0 +1,20 @@
+.piece{
+  margin-top: 20px;
+}
+
+.piece .row{
+
+}
+
+.piece .row .tile{
+  display: inline-block;
+  font-size: 0;
+}
+
+.piece .row .tile-0{
+  background: #f0ead6;
+}
+
+.piece .row .tile-1{
+
+}
