@@ -25,8 +25,6 @@ function init(){
 function addPiece(state, piece, rotation, position){
     var newState = _.cloneDeep(state);
     pieceSetter(newState)(piece.blocks[rotation], position, piece.className);
-//    BoardStore.clearFullLines();
-//    BoardStore.emitChange();
     return newState;
 }
 

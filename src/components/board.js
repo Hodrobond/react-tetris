@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import { newGame } from '../actions/tetris'
 import { handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause } from '../actions/board'
 import Row from "./row";
+import PausedOverlay from './pausedOverlay';
 
 import './boardStyle.css'
 
@@ -64,6 +65,7 @@ class Board extends React.Component{
   render() {
     return (
       <div className="board">
+        <PausedOverlay/>
         {this.props.Board.map((x, i) =>
           <Row value={x} key={i}/>
         )}
