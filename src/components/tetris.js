@@ -1,9 +1,9 @@
 var React = require('react');
-import Board from "./board";
+import Board from "./board/board";
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
-import PausedOverlay from './pausedOverlay';
-import PieceQueue from './pieceQueue';
+import PausedOverlay from './pausedOverlay/pausedOverlay';
+import PieceQueue from './pieceQueue/pieceQueue';
 
 class Tetris extends React.Component{
   componentDidMount() {

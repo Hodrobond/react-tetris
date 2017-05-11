@@ -1,13 +1,13 @@
 import React from 'react'
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
-import { newGame } from '../actions/tetris'
-import { handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause } from '../actions/board'
+import { newGame } from '../../actions/tetris'
+import { handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause } from '../../actions/board'
 import Row from "./row";
 
 import './boardStyle.css'
 
-var pieceSetter = require('../modules/piece-setter');
+var pieceSetter = require('../../modules/piece-setter');
 var _ = require("lodash");
 
 class Board extends React.Component{
