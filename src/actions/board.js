@@ -2,6 +2,30 @@ import {isEmptyPosition} from "../utility/board";
 
 var _ = require('lodash');
 
+export const play = () => {
+  return(dispatch, getState) => {
+    setTimeout(function(){
+      var paused = getState().GameState.paused;
+      if(!paused){
+        handleMove({type:'MOVE_DOWN'})(dispatch, getState);
+      }
+      play()(dispatch, getState);
+    }, 600)
+  }
+}
+
+export const pause = () => {
+  return(dispatch, getState) => {
+    var paused = getState().GameState.paused;
+    if(!paused){
+      dispatch({type: 'PAUSE_GAME'});
+    }
+    else{
+      dispatch({type: 'UNPAUSE_GAME'});
+    }
+  }
+}
+
 export const handleMove = (moveType) => {
   return(dispatch, getState) => {
     let pieceList = getState().PieceList;

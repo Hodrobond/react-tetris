@@ -4,8 +4,10 @@
 import {combineReducers} from 'redux'
 import Board from './board'
 import PieceList from './pieceList'
+import GameState from './gameState'
 
 export default combineReducers({
     Board,
-    PieceList
+    PieceList,
+    GameState
 })
