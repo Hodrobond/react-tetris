@@ -1,5 +1,7 @@
 import {isEmptyPosition} from "../utility/board";
 
+var _ = require('lodash');
+
 export const handleMove = (moveType) => {
   return(dispatch, getState) => {
     let pieceList = getState().PieceList;
@@ -64,12 +66,26 @@ export const handleMoveLeft = () => {
 
 export const handleRotateClockwise = () => {
   return(dispatch,getState) => {
-    dispatch({type:'ROTATE_CLOCKWISE'});
+    let pieceList = getState().PieceList;
+    var currentPiece = _.cloneDeep(pieceList.currentPiece);
+    var board = getState().Board;
+    var rotation = (currentPiece._rotation + 1 > 3) ? 0 : currentPiece._rotation + 1;
+    var isEmpty = isEmptyPosition(board, currentPiece._piece, rotation, currentPiece._position)
+    if(isEmpty){
+      dispatch({type:'ROTATE_CLOCKWISE'});
+    }
   }
 }
 
 export const handleRotateCounterClockwise = () => {
   return(dispatch,getState) => {
-    dispatch({type:'ROTATE_COUNTERCLOCKWISE'});
+    let pieceList = getState().PieceList;
+    var currentPiece = _.cloneDeep(pieceList.currentPiece);
+    var board = getState().Board;
+    var rotation = (currentPiece._rotation - 1 < 0 ) ? 3 : currentPiece._rotation - 1;
+    var isEmpty = isEmptyPosition(board, currentPiece._piece, rotation, currentPiece._position)
+    if(isEmpty){
+      dispatch({type:'ROTATE_COUNTERCLOCKWISE'});
+    }
   }
 }
