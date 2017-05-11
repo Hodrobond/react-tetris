@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import PausedOverlay from './pausedOverlay/pausedOverlay';
 import PieceQueue from './pieceQueue/pieceQueue';
+import ScoreBoard from './score/scoreBoard';
 
 class Tetris extends React.Component{
   componentDidMount() {
@@ -13,6 +14,7 @@ class Tetris extends React.Component{
   render() {
     return (
       <div className="tetris">
+        <ScoreBoard />
         <PausedOverlay />
         <Board />
         <PieceQueue />
