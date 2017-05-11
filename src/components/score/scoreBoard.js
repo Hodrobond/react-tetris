@@ -12,8 +12,8 @@ class piece extends React.Component{
   render() {
     return (
       <div className="scoreBoard">
-        <div className="current-score">{this.props.Score.currentScore}</div>
-        <div className="high-score">{this.props.Score.highScore}</div>
+        <div className="current-score"><span className="text">Current Score </span><span className="value">{this.props.Score.currentScore}</span></div>
+        <div className="high-score"><span className="text">High Score </span><span className="value">{this.props.Score.highScore}</span></div>
       </div>
     )
   }
