@@ -43,6 +43,7 @@ function clearRows(state1){
       for(var j = 0; j < state[0].length; j++){
         state[0][j] = false;
       }
+      state = clearRows(state);
     }
   }
   return state;
