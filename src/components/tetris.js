@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import PausedOverlay from './pausedOverlay/pausedOverlay';
 import PieceQueue from './pieceQueue/pieceQueue';
 import ScoreBoard from './score/scoreBoard';
+import GameOverOverlay from './gameOver/overlay';
 
 class Tetris extends React.Component{
   componentDidMount() {
@@ -15,6 +16,7 @@ class Tetris extends React.Component{
     return (
       <div className="tetris">
         <ScoreBoard />
+        <GameOverOverlay />
         <PausedOverlay />
         <Board />
         <PieceQueue />

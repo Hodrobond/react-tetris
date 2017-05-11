@@ -1,3 +1,4 @@
+var AppConstants = require('../constants/constants');
 import {isEmptyPosition} from "../utility/board";
 
 var _ = require('lodash');
@@ -9,7 +10,15 @@ export const play = () => {
       if(!paused){
         handleMove({type:'MOVE_DOWN'})(dispatch, getState);
       }
-      play()(dispatch, getState);
+      var gameOver = getState().GameState.gameOver;
+      if(!gameOver){
+        play()(dispatch, getState);
+      }
+      else{
+        setTimeout(function(){
+          play()(dispatch, getState);          
+        }, 15000)
+      }
     }, 600)
   }
 }
@@ -52,20 +61,32 @@ export const handleMove = (moveType) => {
     }
     else{
       if(moveType.type == "MOVE_DOWN"){
-        dispatch({type: "ADD_PIECE",
-          piece: currentPiece._piece,
-          rotation: currentPiece._rotation,
-          position: currentPiece._position
-        });
-        var scoreIncrement = calculateScoreIncrement(board);
-        var score = getState().Score.currentScore;
-        var highScore = getState().Score.highScore;
-        dispatch({type: "SCORE_INCREMENT", value: score + scoreIncrement});
-        if(score + scoreIncrement > highScore){
-          dispatch({type: "HIGH_SCORE_INCREMENT", value: score + scoreIncrement});          
+        var isStartEmpty = isEmptyPosition(board,
+                                            pieceList.pieceQueue.queue[0],
+                                            0,
+                                            {
+                                              x: (AppConstants.GAME_WIDTH / 2) - (pieceList.pieceQueue.queue[0].blocks.length / 2),
+                                              y: 0
+                                            }
+                                          );
+        if(!isStartEmpty){
+          dispatch({type: "END_GAME"});
         }
-        dispatch({type: "CLEAR_ROWS"});
-
+        else{
+          dispatch({type: "ADD_PIECE",
+            piece: currentPiece._piece,
+            rotation: currentPiece._rotation,
+            position: currentPiece._position
+          });
+          var scoreIncrement = calculateScoreIncrement(board);
+          var score = getState().Score.currentScore;
+          var highScore = getState().Score.highScore;
+          dispatch({type: "SCORE_INCREMENT", value: score + scoreIncrement});
+          if(score + scoreIncrement > highScore){
+            dispatch({type: "HIGH_SCORE_INCREMENT", value: score + scoreIncrement});
+          }
+          dispatch({type: "CLEAR_ROWS"});
+        }
       }
     }
   }
