@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import { newGame } from '../../actions/tetris'
 import { handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause } from '../../actions/board'
 import Row from "./row";
+import {getPreviewPosition} from '../../utility/board';
 
 import './boardStyle.css'
 
@@ -76,6 +77,14 @@ const mapStateToProps = (state) => {
   var piece = state.PieceList.currentPiece;
   var newBoard = _.cloneDeep(state.Board);
   pieceSetter(newBoard)(piece._piece.blocks[piece._rotation], piece._position, piece._piece.className);
+  var previewY = getPreviewPosition(state.Board, piece._piece, piece._rotation, piece._position)
+  pieceSetter(newBoard)(piece._piece.blocks[piece._rotation],
+                      {
+                        x: piece._position.x,
+                        y: piece._position.y + previewY - 1
+                      },
+                      "preview");
+
   return {
     Board: newBoard,
     PieceList: state.PieceList,

@@ -32,3 +32,7 @@
 .tile.tile-piece-z{
   background: teal;
 }
+
+.tile.tile-preview{
+  background: blue;
+}

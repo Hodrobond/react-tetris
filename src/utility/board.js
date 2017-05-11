@@ -27,3 +27,21 @@ export const isEmptyPosition = (board, piece, rotation, position) => {
   }
   return true;
 }
+
+export const getPreviewPosition = (board, piece, rotation, position) => {
+  console.log(board);
+  console.log(piece);
+  console.log(rotation);
+  console.log(position);
+  var isEmpty = true;
+  var y = -1;
+  while(isEmpty){
+    y++;
+    isEmpty = isEmptyPosition(board, piece, rotation, {
+      x: position.x,
+      y: position.y + y
+    })
+  }
+
+  return y;
+}
