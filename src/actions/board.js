@@ -1,5 +1,5 @@
 var AppConstants = require('../constants/constants');
-import {isEmptyPosition} from "../utility/board";
+import {isEmptyPosition, getPreviewPosition} from "../utility/board";
 
 var _ = require('lodash');
 
@@ -16,7 +16,7 @@ export const play = () => {
       }
       else{
         setTimeout(function(){
-          play()(dispatch, getState);          
+          play()(dispatch, getState);
         }, 15000)
       }
     }, 600)
@@ -52,12 +52,17 @@ export const handleMove = (moveType) => {
       case "MOVE_DOWN":
         move = {x: currentPiece._position.x, y: currentPiece._position.y + 1}
         break;
+      case "MOVE_UP":
+        var newY = getPreviewPosition(board, currentPiece._piece, currentPiece._rotation, currentPiece._position);
+        move = {x: currentPiece._position.x, y: newY}
+        break;
     }
 
     var isEmpty = isEmptyPosition(board, currentPiece._piece, currentPiece._rotation, move)
     if(isEmpty){
       dispatch({type: moveType.type,
-        board: board});
+        board: board,
+        move: move});
     }
     else{
       if(moveType.type == "MOVE_DOWN"){

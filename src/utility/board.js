@@ -43,5 +43,5 @@ export const getPreviewPosition = (board, piece, rotation, position) => {
     })
   }
 
-  return y;
+  return (position.y + y - 1);
 }

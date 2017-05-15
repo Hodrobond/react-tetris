@@ -37,20 +37,7 @@ function addPiece(state){
 function move(state, action){
   var currentPiece = _.clone(state.currentPiece);
 
-  var move;
-  switch(action.type){
-    case "MOVE_LEFT":
-      move = {x: currentPiece._position.x - 1, y: currentPiece._position.y};
-      break;
-    case "MOVE_RIGHT":
-      move = {x: currentPiece._position.x + 1, y: currentPiece._position.y};
-      break;
-    case "MOVE_DOWN":
-      move = {x: currentPiece._position.x, y: currentPiece._position.y + 1}
-      break;
-  }
-
-  currentPiece._position = move;
+  currentPiece._position = action.move;
 
   return {...state,
           currentPiece: currentPiece};
@@ -84,6 +71,7 @@ const PieceList = (state = 0, action) => {
     case 'MOVE_LEFT':
     case 'MOVE_RIGHT':
     case 'MOVE_DOWN':
+    case 'MOVE_UP':
       return move(state, action);
     case "ADD_PIECE":
       return addPiece(state);

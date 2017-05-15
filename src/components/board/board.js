@@ -77,11 +77,11 @@ const mapStateToProps = (state) => {
   var piece = state.PieceList.currentPiece;
   var newBoard = _.cloneDeep(state.Board);
   pieceSetter(newBoard)(piece._piece.blocks[piece._rotation], piece._position, piece._piece.className);
-  var previewY = getPreviewPosition(state.Board, piece._piece, piece._rotation, piece._position)
+  var previewY = getPreviewPosition(state.Board, piece._piece, piece._rotation, piece._position);
   pieceSetter(newBoard)(piece._piece.blocks[piece._rotation],
                       {
                         x: piece._position.x,
-                        y: piece._position.y + previewY - 1
+                        y: previewY
                       },
                       "preview");
 
