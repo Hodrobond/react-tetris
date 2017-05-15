@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
-import { pause } from '../../actions/board'
+import { pause } from '../../actions/pieceList'
 
 import './pausedOverlay.css'
 

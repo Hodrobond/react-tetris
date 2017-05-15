@@ -1,39 +1,8 @@
 var AppConstants = require('../constants/constants');
 import {isEmptyPosition, getPreviewPosition} from "../utility/board";
+import {calculateScoreIncrement} from './score';
 
 var _ = require('lodash');
-
-export const play = () => {
-  return(dispatch, getState) => {
-    setTimeout(function(){
-      var paused = getState().GameState.paused;
-      if(!paused){
-        handleMove({type:'MOVE_DOWN'})(dispatch, getState);
-      }
-      var gameOver = getState().GameState.gameOver;
-      if(!gameOver){
-        play()(dispatch, getState);
-      }
-      else{
-        setTimeout(function(){
-          play()(dispatch, getState);
-        }, 15000)
-      }
-    }, 600)
-  }
-}
-
-export const pause = () => {
-  return(dispatch, getState) => {
-    var paused = getState().GameState.paused;
-    if(!paused){
-      dispatch({type: 'PAUSE_GAME'});
-    }
-    else{
-      dispatch({type: 'UNPAUSE_GAME'});
-    }
-  }
-}
 
 export const handleMove = (moveType) => {
   return(dispatch, getState) => {
@@ -96,29 +65,6 @@ export const handleMove = (moveType) => {
       }
     }
   }
-}
-
-function calculateScoreIncrement(board){
-  var state = _.cloneDeep(board);
-  var length = state[state.length - 1].length;
-  var numCleared = 0;
-  for(var i = 0; i < state.length; i++){
-    for(var j = 0; j < state[i].length; j++){
-      if(state[i][j] === false){
-        break;
-      }
-      if(j === state[i].length - 1){
-        state.splice(i, 1);
-        state.unshift(new Array(state[0].length));
-        for(var j = 0; j < state[0].length; j++){
-          state[0][j] = false;
-        }
-        numCleared++;
-      }
-    }
-  }
-  var score = Math.pow(2, numCleared) * length;
-  return score;
 }
 
 export const handleMoveUp = () => {

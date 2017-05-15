@@ -2,7 +2,8 @@ import React from 'react'
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import { newGame } from '../../actions/tetris'
-import { handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause, handleHold } from '../../actions/board'
+import { handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, handleHold } from '../../actions/pieceList'
+import {play, pause} from '../../actions/gameState'
 import Row from "./row";
 import {getPreviewPosition} from '../../utility/board';
 
