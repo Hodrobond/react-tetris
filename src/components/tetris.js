@@ -6,6 +6,7 @@ import PausedOverlay from './pausedOverlay/pausedOverlay';
 import PieceQueue from './pieceQueue/pieceQueue';
 import ScoreBoard from './score/scoreBoard';
 import GameOverOverlay from './gameOver/overlay';
+import HeldPiece from './heldPiece/heldPiece';
 
 class Tetris extends React.Component{
   componentDidMount() {
@@ -20,6 +21,7 @@ class Tetris extends React.Component{
         <PausedOverlay />
         <Board />
         <PieceQueue />
+        <HeldPiece />
       </div>
     )
   }
