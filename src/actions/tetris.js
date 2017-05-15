@@ -1,5 +1,8 @@
+import {play} from './gameState';
+
 export const newGame = () => {
-  return ({
-    type:'NEW_GAME'
-  });
+  return(dispatch, getState) => {
+    dispatch({type:'NEW_GAME'});
+    play()(dispatch, getState);
+  }
 }

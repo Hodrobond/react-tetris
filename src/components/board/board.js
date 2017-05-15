@@ -15,7 +15,6 @@ var _ = require("lodash");
 class Board extends React.Component{
   componentDidMount() {
     this.props.newGame();
-    this.props.play();
     document.addEventListener("keydown", this.handleKeyPress.bind(this));
   }
 

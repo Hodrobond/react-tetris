@@ -11,11 +11,6 @@ export const play = () => {
       if(!gameOver){
         play()(dispatch, getState);
       }
-      else{
-        setTimeout(function(){
-          play()(dispatch, getState);
-        }, 15000)
-      }
     }, 600)
   }
 }
