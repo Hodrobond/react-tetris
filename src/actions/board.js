@@ -78,6 +78,7 @@ export const handleMove = (moveType) => {
           dispatch({type: "END_GAME"});
         }
         else{
+          dispatch({type: "SHIFT_QUEUE"});
           dispatch({type: "ADD_PIECE",
             piece: currentPiece._piece,
             rotation: currentPiece._rotation,
@@ -166,6 +167,19 @@ export const handleRotateCounterClockwise = () => {
     var isEmpty = isEmptyPosition(board, currentPiece._piece, rotation, currentPiece._position)
     if(isEmpty){
       dispatch({type:'ROTATE_COUNTERCLOCKWISE'});
+    }
+  }
+}
+
+export const handleHold = () => {
+  return(dispatch,getState) => {
+
+    var isHeldPiece = getState().PieceList.heldPiece;
+    if(isHeldPiece != null){
+      dispatch({type: 'REPLACE_HELD_PIECE'});
+    }
+    else{
+      dispatch({type: 'HOLD_PIECE'});
     }
   }
 }

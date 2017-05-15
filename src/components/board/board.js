@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux'
 import { newGame } from '../../actions/tetris'
-import { handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause } from '../../actions/board'
+import { handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause, handleHold } from '../../actions/board'
 import Row from "./row";
 import {getPreviewPosition} from '../../utility/board';
 
@@ -37,6 +37,10 @@ class Board extends React.Component{
         //down arrow
         case 40:
           this.props.handleMoveDown();
+          break;
+        //c
+        case 67:
+          this.props.handleHold();
           break;
         //p
         case 80:
@@ -76,14 +80,16 @@ class Board extends React.Component{
 const mapStateToProps = (state) => {
   var piece = state.PieceList.currentPiece;
   var newBoard = _.cloneDeep(state.Board);
-  pieceSetter(newBoard)(piece._piece.blocks[piece._rotation], piece._position, piece._piece.className);
-  var previewY = getPreviewPosition(state.Board, piece._piece, piece._rotation, piece._position);
-  pieceSetter(newBoard)(piece._piece.blocks[piece._rotation],
-                      {
-                        x: piece._position.x,
-                        y: previewY
-                      },
-                      "preview");
+  if(piece._piece){
+    pieceSetter(newBoard)(piece._piece.blocks[piece._rotation], piece._position, piece._piece.className);
+    var previewY = getPreviewPosition(state.Board, piece._piece, piece._rotation, piece._position);
+    pieceSetter(newBoard)(piece._piece.blocks[piece._rotation],
+                        {
+                          x: piece._position.x,
+                          y: previewY
+                        },
+                        "preview");
+  }
 
   return {
     Board: newBoard,
@@ -93,7 +99,7 @@ const mapStateToProps = (state) => {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({newGame, handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause}, dispatch);
+  return bindActionCreators({newGame, handleMoveUp, handleMoveRight, handleMoveDown, handleMoveLeft, handleRotateClockwise, handleRotateCounterClockwise, play, pause, handleHold}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

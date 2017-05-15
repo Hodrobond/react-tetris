@@ -13,11 +13,12 @@ function init(){
       y: 0
     }
   }
+  var heldPiece = null;
   return {
     pieceQueue,
-    currentPiece
+    currentPiece,
+    heldPiece
   }
-
 }
 
 function addPiece(state){
@@ -61,6 +62,36 @@ function rotateCounterClockwise(state){
   }
 }
 
+function holdPiece(state){
+  var nextPiece = state.pieceQueue.getNext();
+  return {
+    ...state,
+    currentPiece: {
+      _piece: nextPiece,
+      _position: {
+        x: (AppConstants.GAME_WIDTH / 2) - (nextPiece.blocks.length / 2),
+        y: 0
+      },
+      _rotation: 0
+    },
+    heldPiece: state.currentPiece._piece
+  }
+}
+
+function replaceHeldPiece(state){
+  var held = state.heldPiece;
+  var newCurrent = {
+    _piece: held,
+    _rotation: 0,
+    _position: state.currentPiece._position
+  }
+  return {
+    ...state,
+    heldPiece: state.currentPiece._piece,
+    currentPiece: newCurrent
+  }
+}
+
 const PieceList = (state = 0, action) => {
   if(state === 0){
     return init();
@@ -73,12 +104,16 @@ const PieceList = (state = 0, action) => {
     case 'MOVE_DOWN':
     case 'MOVE_UP':
       return move(state, action);
-    case "ADD_PIECE":
+    case "SHIFT_QUEUE":
       return addPiece(state);
     case 'ROTATE_CLOCKWISE':
       return rotateClockwise(state);
     case 'ROTATE_COUNTERCLOCKWISE':
       return rotateCounterClockwise(state);
+    case 'HOLD_PIECE':
+      return holdPiece(state);
+    case 'REPLACE_HELD_PIECE':
+      return replaceHeldPiece(state);
     default:
       return state;
   }
