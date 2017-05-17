@@ -5,7 +5,7 @@
 }
  */
 const init = () => {
-  let highScore = localStorage.getItem( 'react-tetris-highScore' ) || 0;
+  let highScore = parseInt(localStorage.getItem( 'react-tetris-highScore' )) || 0;
   return {
     currentScore: 0,
     highScore: highScore
