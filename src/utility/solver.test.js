@@ -154,7 +154,7 @@ var testBSBoard = [[0,0,0,0,0,0,0,0,0,0],
 [1,1,1,1,1,0,0,0,0,0],
 [1,1,1,1,1,1,0,0,0,0]
 ];
-/*
+
 
 it('getInfo - 1', () => {
   var solver = new Solver();
@@ -236,6 +236,7 @@ it('linesCleared - 3', () => {
   expect(height).toEqual(solution);
 })
 
+/*
 it('Heuristics no rotate - 1', () => {
   var solver = new Solver();
   const currentPiece = {
