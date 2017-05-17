@@ -19,6 +19,9 @@ export const calculateScoreIncrement = (board) => {
       }
     }
   }
-  var score = Math.pow(2, numCleared) * length;
-  return score;
+  var score = numCleared > 0 ? Math.pow(2, numCleared - 1) * length : 0;
+  return {
+    score,
+    numCleared
+  };
 }

@@ -53,12 +53,16 @@ export const handleMove = (moveType) => {
             rotation: currentPiece._rotation,
             position: currentPiece._position
           });
-          var scoreIncrement = calculateScoreIncrement(board);
+          board = getState().Board;
+          var newScore =  calculateScoreIncrement(board);
+          var scoreIncrement = newScore.score;
+          var linesCleared = newScore.numCleared;
           var score = getState().Score.currentScore;
           var highScore = getState().Score.highScore;
-          dispatch({type: "SCORE_INCREMENT", value: score + scoreIncrement});
+          var prevLines = getState().Score.linesCleared;
+          dispatch({type: "SCORE_INCREMENT", value: score + scoreIncrement, linesCleared: linesCleared + prevLines });
           if(score + scoreIncrement > highScore){
-            dispatch({type: "HIGH_SCORE_INCREMENT", value: score + scoreIncrement});
+            dispatch({type: "HIGH_SCORE_INCREMENT", value: score + scoreIncrement, linesCleared: linesCleared + prevLines});
           }
           dispatch({type: "CLEAR_ROWS"});
         }
