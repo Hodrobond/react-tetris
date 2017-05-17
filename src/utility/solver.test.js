@@ -280,18 +280,3 @@ it('Heuristics Clear Lines - 1', () => {
   const solution = ['ROTATE_CLOCKWISE', 'ROTATE_CLOCKWISE', 'ROTATE_CLOCKWISE', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT', 'MOVE_LEFT'];
   expect(solved.moveList).toEqual(solution);
 })*/
-
-it('Heuristics Clear Lines - 2', () => {
-  var solver = new Solver();
-  const currentPiece = {
-    _piece: PieceTypes.I,
-    _rotation: 0,
-    _position: {
-      x: 5,
-      y: 2
-    }
-  }
-  var solved = solver.getMoveList(testBSBoard, currentPiece);
-  const solution = ['MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT', 'MOVE_RIGHT'];
-  expect(solved.moveList).toEqual(solution);
-})
