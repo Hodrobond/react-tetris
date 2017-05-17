@@ -2,7 +2,6 @@ var AppConstants = require('../constants/constants');
 
 export const isEmptyPosition = (board, piece, rotation, position) => {
   var blocks = piece.blocks[rotation];
-
   for (var x = 0; x < piece.blocks[0].length; x++) {
     for (var y = 0; y < piece.blocks[0].length; y++) {
       var block = blocks[y][x];
@@ -29,10 +28,6 @@ export const isEmptyPosition = (board, piece, rotation, position) => {
 }
 
 export const getPreviewPosition = (board, piece, rotation, position) => {
-  console.log(board);
-  console.log(piece);
-  console.log(rotation);
-  console.log(position);
   var isEmpty = true;
   var y = -1;
   while(isEmpty){

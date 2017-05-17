@@ -6,10 +6,12 @@ import Board from './board';
 import PieceList from './pieceList';
 import GameState from './gameState';
 import Score from './score';
+import Solver from './solver';
 
 export default combineReducers({
     Board,
     PieceList,
     GameState,
-    Score
+    Score,
+    Solver
 })

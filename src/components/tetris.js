@@ -7,6 +7,7 @@ import PieceQueue from './pieceQueue/pieceQueue';
 import ScoreBoard from './score/scoreBoard';
 import GameOverOverlay from './gameOver/overlay';
 import HeldPiece from './heldPiece/heldPiece';
+import SolverButton from './solver/button';
 
 class Tetris extends React.Component{
   componentDidMount() {
@@ -17,6 +18,7 @@ class Tetris extends React.Component{
     return (
       <div className="tetris">
         <ScoreBoard />
+        <SolverButton />
         <GameOverOverlay />
         <PausedOverlay />
         <Board />
