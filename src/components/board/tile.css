@@ -1,6 +1,9 @@
 .tile{
   width: 20px;
   height: 20px;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 1px;
 }
 
 @media only screen and (orientation: portrait){
@@ -21,6 +24,7 @@
   .tile{
     width: 15px;
     height: 15px;
+    margin: 2px;
   }
 }
 
@@ -28,6 +32,7 @@
   .tile{
     width: 20px;
     height: 20px;
+    margin: 2px;
   }
 }
 
@@ -36,6 +41,7 @@
   .tile{
     width: 20px;
     height: 20px;
+    margin: 2px;
   }
 }
 
