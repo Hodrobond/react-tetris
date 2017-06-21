@@ -56,7 +56,7 @@ export const handleMove = (moveType) => {
           board = getState().Board;
           var newScore =  calculateScoreIncrement(board);
           var scoreIncrement = newScore.score;
-          var linesCleared = newScore.numCleared;
+          var linesCleared = newScore.linesCleared;
           var score = getState().Score.currentScore;
           var highScore = getState().Score.highScore;
           var prevLines = getState().Score.linesCleared;
