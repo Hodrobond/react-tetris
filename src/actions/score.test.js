@@ -26,7 +26,7 @@ it('Score Increment - 1', () => {
   const answer = calculateScoreIncrement(emptyBoard);
   const solution = {
     score: 0,
-    numCleared: 0
+    linesCleared: 0
   };
   expect(answer).toEqual(solution);
 })
@@ -56,7 +56,7 @@ it('Score Increment - 2', () => {
   const answer = calculateScoreIncrement(emptyBoard);
   const solution = {
     score: 10,
-    numCleared: 1
+    linesCleared: 1
   };
   expect(answer).toEqual(solution);
 })
@@ -86,7 +86,7 @@ it('Score Increment - 3', () => {
   const answer = calculateScoreIncrement(emptyBoard);
   const solution = {
     score: 20,
-    numCleared: 2
+    linesCleared: 2
   };
   expect(answer).toEqual(solution);
 })
@@ -116,7 +116,7 @@ it('Score Increment - 4', () => {
   const answer = calculateScoreIncrement(emptyBoard);
   const solution = {
     score: 40,
-    numCleared: 3
+    linesCleared: 3
   };
   expect(answer).toEqual(solution);
 })
@@ -146,7 +146,7 @@ it('Score Increment -  5', () => {
   const answer = calculateScoreIncrement(emptyBoard);
   const solution = {
     score: 80,
-    numCleared: 4
+    linesCleared: 4
   };
   expect(answer).toEqual(solution);
 })
@@ -176,7 +176,7 @@ it('Score Increment -  6', () => {
   const answer = calculateScoreIncrement(emptyBoard);
   const solution = {
     score: 20,
-    numCleared: 2
+    linesCleared: 2
   };
   expect(answer).toEqual(solution);
 })
