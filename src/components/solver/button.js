@@ -14,7 +14,7 @@ class solverButton extends React.Component{
     return (
       <div className="solver-button">
         <div className="is-solving">{this.props.Solver.isSolving}</div>
-        <button className="toggle-solver" onClick={this.props.toggleSolving}></button>
+        <button className="toggle-solver" onClick={this.props.toggleSolving}>Autoplay</button>
       </div>
     )
   }
