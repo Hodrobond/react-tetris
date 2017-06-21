@@ -1,0 +1,27 @@
+.game-over-overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0, 0.7);
+}
+
+.game-over-overlay .wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.game-over-overlay .wrapper .game-over-message{
+  color: white;
+  font-size: 20px;
+}
+
+.game-over-overlay .wrapper .new-game{
+  width: 100px;
+  height: 50px;
+  font-size: 16px;
+
+}

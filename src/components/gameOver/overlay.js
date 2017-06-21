@@ -14,8 +14,10 @@ class gameOverOverlay extends React.Component{
     if(this.props.GameState.gameOver){
       return (
         <div className="game-over-overlay">
-          <p className="game-over-message">I'm sorry, you've lost</p>
-          <button className="new-game" onClick={this.props.newGame}>New Game</button>
+          <div className="wrapper">
+            <p className="game-over-message">I'm sorry, you've lost</p>
+            <button className="new-game" onClick={this.props.newGame}>New Game</button>
+          </div>
         </div>
       )
     }
