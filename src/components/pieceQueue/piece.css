@@ -1,9 +1,5 @@
-.piece{
+.piece-queue:not(:first-child) .piece{
   margin-top: 20px;
-}
-
-.piece .row{
-
 }
 
 .piece .row .tile{

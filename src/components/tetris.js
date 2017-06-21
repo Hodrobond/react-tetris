@@ -9,6 +9,8 @@ import GameOverOverlay from './gameOver/overlay';
 import HeldPiece from './heldPiece/heldPiece';
 import SolverButton from './solver/button';
 
+import './tetris.css'
+
 class Tetris extends React.Component{
   componentDidMount() {
 
@@ -21,9 +23,11 @@ class Tetris extends React.Component{
         <SolverButton />
         <GameOverOverlay />
         <PausedOverlay />
+        <div className="info">
+          <PieceQueue />
+          <HeldPiece />
+        </div>
         <Board />
-        <PieceQueue />
-        <HeldPiece />
       </div>
     )
   }

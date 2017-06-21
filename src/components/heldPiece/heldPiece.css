@@ -1,0 +1,17 @@
+.held-piece .piece-queue .piece{
+  margin-top: 10px;
+}
+
+.held-piece .piece .row{
+  font-size: 0;
+}
+
+.held-piece .piece .row .tile{
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+}
+
+.held-piece{
+  margin-top: 20px;
+}

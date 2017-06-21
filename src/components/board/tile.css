@@ -1,7 +1,42 @@
 .tile{
   width: 20px;
   height: 20px;
-  margin: 2px;
+}
+
+@media only screen and (orientation: portrait){
+  .tile{
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media only screen and (min-device-width : 480px) and (max-device-width : 768px) and (orientation: landscape){
+  .tile{
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1224px) {
+  .tile{
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media only screen  and (min-width : 1224px) {
+  .tile{
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+  .tile{
+    width: 20px;
+    height: 20px;
+  }
 }
 
 
