@@ -1,11 +1,20 @@
 import Solver from '../utility/solver';
+import {isEmptyPosition} from "../utility/board";
 import {handleMove, handleRotateClockwise, handleRotateCounterClockwise, } from './pieceList'
 var _ = require('lodash');
 
 export const solve = () => {
   return(dispatch, getState) => {
     var isSolving = getState().Solver.isSolving;
-    if(isSolving){
+    var gameOver = getState().GameState.gameOver;
+    var paused = getState().GameState.paused;
+    //ew, this is wrong
+    if(paused){
+      setTimeout(function(){
+        solve()(dispatch, getState);
+      }, 1000);
+    }
+    else if(isSolving && !gameOver){
       var board = getState().Board;
       var currentPiece = _.cloneDeep(getState().PieceList.currentPiece);
       var solver = new Solver();
