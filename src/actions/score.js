@@ -1,9 +1,9 @@
 var _ = require('lodash');
 
 export const calculateScoreIncrement = (board) => {
-  var state = _.cloneDeep(board);
+  var state = board.slice();
   var length = state[state.length - 1].length;
-  var numCleared = 0;
+  var linesCleared = 0;
   for(var i = 0; i < state.length; i++){
     for(var j = 0; j < state[i].length; j++){
       if(state[i][j] === false){
@@ -15,13 +15,13 @@ export const calculateScoreIncrement = (board) => {
         for(var j = 0; j < state[0].length; j++){
           state[0][j] = false;
         }
-        numCleared++;
+        linesCleared++;
       }
     }
   }
-  var score = numCleared > 0 ? Math.pow(2, numCleared - 1) * length : 0;
+  var score = linesCleared > 0 ? Math.pow(2, linesCleared - 1) * length : 0;
   return {
     score,
-    numCleared
+    linesCleared
   };
 }
